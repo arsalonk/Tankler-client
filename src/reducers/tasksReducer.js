@@ -1,28 +1,28 @@
-import { FETCH_FISH_REQUEST, FETCH_FISH_SUCCESS, FETCH_FISH_ERROR } from '../actions/filler';
+import { FETCH_TASKS_REQUEST, FETCH_TASKS_SUCCESS, FETCH_TASKS_ERROR } from '../actions/tasks';
 
 const initialState = {
-  fish: [],
+  tasks: [],
   loading: false,
   error: null
 };
 
-const fishReducer = (state = initialState, action) => {
+const tasksReducer = (state = initialState, action) => {
   switch(action.type) {
-    case FETCH_FISH_REQUEST:
+    case FETCH_TASKS_REQUEST:
       return {
         ...state,
         loading: true
       }
 
-    case FETCH_FISH_SUCCESS:
+    case FETCH_TASKS_SUCCESS:
       return {
         ...state,
         loading: false,
         error: null,
-        fish: action.fish
+        tasks: action.tasks
       }
 
-    case FETCH_FISH_ERROR:
+    case FETCH_TASKS_ERROR:
       return {
         ...state,
         loading: false,
@@ -30,8 +30,8 @@ const fishReducer = (state = initialState, action) => {
       }
 
     default:
-      return state;
+      return state
   }
 }
 
-export default fishReducer;
+export default tasksReducer;

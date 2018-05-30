@@ -4,17 +4,16 @@ import { Route } from 'react-router-dom';
 import TopNav from './components/top-nav';
 import Home from './components/home';
 import Tank from './components/tank';
-import Tasks from './components/tasks';
+import Tasks from './components/tasks/tasks';
 import Parameters from './components/parameters';
 import Database from './components/database';
 import Info from './components/info';
-import FishList from './components/fish-list'
 import './App.css';
-import { fetchFish } from './actions/filler';
+import { fetchTaskFolder } from './actions/task-folders';
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchFish());
+    this.props.dispatch(fetchTaskFolder())
   }
 
   render() {
@@ -24,11 +23,10 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <TopNav />
-        <FishList />
         <Route exact path='/' component={Home} />
-        <Route exact path='/tank' component={Tank} />
-        <Route exact path='/tasks' component={Tasks} />
-        <Route exact path='/parameters' component={Parameters} />
+        <Route path='/tank' component={Tank} />
+        <Route path='/tasks' component={Tasks} />
+        <Route path='/parameters' component={Parameters} />
         <Route exact path='/database' component={Database} />
         <Route exact path='/info' component={Info} />
         <p className="App-intro">

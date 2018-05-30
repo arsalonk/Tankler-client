@@ -10,7 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App />
+      <App feedings={['apple', 'banana']}/>
     </Router>
   </Provider>, 
   document.getElementById('root'));

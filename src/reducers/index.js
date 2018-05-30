@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import fishReducer from './fishReducer';
+import tasksReducer from './tasksReducer';
+import taskFolderReducer from './taskFolderReducer';
 
 const rootReducer = combineReducers({
-  fishReducer
+  tasksReducer,
+  taskFolderReducer
 });
 
 export default rootReducer;
