@@ -21,7 +21,27 @@ export const DELETE_PARAMETER_SUCCESS = 'DELETE_PARAMETER_SUCCESS';
 const deleteParameterSuccess = id => ({
   type: DELETE_PARAMETER_SUCCESS,
   id
-})
+});
+
+export const SHOW_CREATE_WINDOWP = 'SHOW_CREATE_WINDOWP';
+export const showCreateWindowP = () => ({
+  type: SHOW_CREATE_WINDOWP,
+});
+
+export const HIDE_CREATE_WINDOWP = 'HIDE_CREATE_WINDOWP';
+export const hideCreateWindowP = () => ({
+  type: HIDE_CREATE_WINDOWP
+});
+
+export const SHOW_UPDATE_WINDOW = 'SHOW_CREATE_WINDOW';
+export const showUpdateWindow = () => ({
+  type: SHOW_UPDATE_WINDOW,
+});
+
+export const HIDE_UPDATE_WINDOW = 'HIDE_CREATE_WINDOW';
+export const hideUpdateWindow = () => ({
+  type: HIDE_UPDATE_WINDOW
+});
 
 export const fetchParameters = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
@@ -38,15 +58,32 @@ export const fetchParameters = () => (dispatch, getState) => {
     .catch(error => dispatch(fetchParametersError(error)));
 };
 
-export const putParameters = id => (dispatch, getState) => {
+export const createParameter = (stats, category) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  fetch(`${API_BASE_URL}/api/parameters`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify({ stats, category })
+  })
+    .then(res => res.json())
+    .then(() => dispatch(fetchParameters()))
+}
+
+export const updateParameter = (stats, category, id) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/api/parameters/${id}`, {
     method: 'PUT',
     headers: {
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`
-    }
+    },
+    body: JSON.stringify({ stats, category })
   })
     .then(res => res.json())
+    .then(dispatch(hideUpdateWindow()))
     .then(dispatch(fetchParameters()))
     .catch(err => console.log(err));
 }

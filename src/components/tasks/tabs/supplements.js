@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { deleteTask } from '../../actions/tasks';
+import { deleteTask } from '../../../actions/tasks';
 
-export function Testing(props) {
+export function Supplements(props) {
 
-  const filter = props.tasks.filter(task => task.category === 'testing');
+  const filter = props.tasks.filter(task => task.category === 'supplements');
   const tasks = filter.map((task, index) => {
     return (
       <li key={index}>
@@ -30,4 +30,4 @@ const mapStateToProps = state => ({
   creating: state.tasks.creating
 });
 
-export default connect(mapStateToProps)(Testing)
+export default connect(mapStateToProps)(Supplements)

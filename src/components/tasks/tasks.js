@@ -1,10 +1,10 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
 import TasksNav from './tasks-nav';
-import Feeding from './feeding';
-import Supplements from './supplements';
-import Testing from './testing';
-import Maintenance from './maintenance';
+import Feeding from './tabs/feeding';
+import Supplements from './tabs/supplements';
+import Testing from './tabs/testing';
+import Maintenance from './tabs/maintenance';
 import {connect} from 'react-redux';
 import { fetchTasks } from '../../actions/tasks';
 import Create from './create';

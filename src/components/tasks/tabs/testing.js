@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { deleteTask } from '../../actions/tasks';
+import { deleteTask } from '../../../actions/tasks';
 
-export function Feeding(props) {
-  console.log(props)
-  const filter = props.tasks.filter(task => task.category === 'feeding');
+export function Testing(props) {
+
+  const filter = props.tasks.filter(task => task.category === 'testing');
   const tasks = filter.map((task, index) => {
     return (
       <li key={index}>
@@ -13,7 +13,7 @@ export function Feeding(props) {
       </li>
     );
   });
-  
+
   if(!props.creating) {
     return (
       <ul>
@@ -30,4 +30,4 @@ const mapStateToProps = state => ({
   creating: state.tasks.creating
 });
 
-export default connect(mapStateToProps)(Feeding)
+export default connect(mapStateToProps)(Testing)

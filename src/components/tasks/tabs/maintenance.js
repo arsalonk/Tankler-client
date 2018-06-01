@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { deleteTask } from '../../actions/tasks';
+import { deleteTask } from '../../../actions/tasks';
 
 export function Maintenance(props) {
 

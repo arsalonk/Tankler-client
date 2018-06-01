@@ -4,14 +4,14 @@ import {Route} from 'react-router-dom';
 import { fetchParameters } from '../../actions/parameters';
 
 import ParametersNav from './parameters-nav'
-import Alkalinity from './alkalinity';
-import Ammonia from './ammonia';
-import Calcium from './calcium';
-import Nitrate from './nitrate';
-import PH from './pH';
-import Phosphate from './phosphate';
-import Salinity from './salinity';
-import Temperature from './temperature';
+import Alkalinity from './tabs/alkalinity';
+import Ammonia from './tabs/ammonia';
+import Calcium from './tabs/calcium';
+import Nitrate from './tabs/nitrate';
+import PH from './tabs/pH';
+import Phosphate from './tabs/phosphate';
+import Salinity from './tabs/salinity';
+import Temperature from './tabs/temperature';
 
 class Parameters extends React.Component{
   componentDidMount() {
@@ -23,7 +23,7 @@ class Parameters extends React.Component{
       <div>
         <h2>Parameters</h2>
         <ParametersNav />
-        <Route exact path='/dashboardparameters/alkalinity' component={Alkalinity}/>
+        <Route exact path='/dashboard/parameters/alkalinity' component={Alkalinity}/>
         <Route exact path='/dashboard/parameters/ammonia' component={Ammonia} />
         <Route exact path='/dashboard/parameters/calcium' component={Calcium} />
         <Route exact path='/dashboard/parameters/nitrate' component={Nitrate} />
