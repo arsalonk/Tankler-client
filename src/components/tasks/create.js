@@ -1,30 +1,49 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { showCreateWindow, createTask } from '../../actions/tasks';
+import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import Input from '../auth/input';
+import {required, nonEmpty} from '../../validators';
+import { showCreateWindow, createTask, hideCreateWindow } from '../../actions/tasks';
 
-function Create(props) {
-  console.log(props)
+class Create extends React.Component {
 
-  if(props.creating) {
-    const task = {name: 'test', category: 'feeding'};
-    return (
-      <form>
-        <label htmlFor='name'>Name:</label>
-        <input type='text' name='name'/>
-        <label htmlFor='category'>Category:</label>
-        <input type='text' name='category'/>
-      </form>
-      <div>
-        <p>FILLER TEXT</p>
-        <button onClick={() => props.dispatch(createTask(task))}>CREATE</button>
-      </div>
-    )
+  onSubmit(values) {
+    this.props.dispatch(createTask(values.name, values.category))
   }
 
-  else {
-    return (
-      <button onClick={() => props.dispatch(showCreateWindow())}>Create Task</button>
-    )
+  render() {
+    if (this.props.creating) {
+      return (
+        <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+          <Field
+            name='name'
+            type='text'
+            component={Input}
+            label='Name:'
+            validate={[required, nonEmpty]}
+          />
+          <Field
+            name='category'
+            type='text'
+            component={Input}
+            label='Category:'
+            validate={[required, nonEmpty]}
+          />
+          <button
+            type='submit'
+            disabled={this.props.pristine || this.props.submitting}>
+            create
+          </button>
+          <button onClick={() => this.props.dispatch(hideCreateWindow())}>cancel</button>
+        </form>
+      )
+    }
+
+    else {
+      return (
+        <button onClick={() => this.props.dispatch(showCreateWindow())}>Create Task</button>
+      )
+    }
   }
 }
 
@@ -32,4 +51,9 @@ const mapStateToProps = state => ({
   creating: state.tasks.creating
 })
 
-export default connect(mapStateToProps)(Create)
+// connect(mapStateToProps)(Create);
+
+export default reduxForm({
+  form: 'create',
+  onSubmitFail: (errors, dispatch) => dispatch(focus('create', 'name'))
+})(connect(mapStateToProps)(Create));

@@ -1,4 +1,4 @@
-import {API_BASE_URL} from '../config';
+import { API_BASE_URL } from '../config';
 
 export const FETCH_PARAMETERS_REQUEST = 'FETCH_PARAMETERS_REQUEST';
 const fetchParametersRequest = () => ({
@@ -37,6 +37,19 @@ export const fetchParameters = () => (dispatch, getState) => {
     .then(parameters => dispatch(fetchParametersSuccess(parameters)))
     .catch(error => dispatch(fetchParametersError(error)));
 };
+
+export const putParameters = id => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  fetch(`${API_BASE_URL}/api/parameters/${id}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => res.json())
+    .then(dispatch(fetchParameters()))
+    .catch(err => console.log(err));
+}
 
 export const deleteParameter = (id) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;

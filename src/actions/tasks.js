@@ -62,7 +62,7 @@ export const deleteTask = (id) => (dispatch, getState) => {
     .catch(error => dispatch(fetchTasksError(error)));
 };
 
-export const createTask = (task) => (dispatch, getState) => {
+export const createTask = (name, category) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/api/tasks`, {
     method: 'POST',
@@ -71,7 +71,7 @@ export const createTask = (task) => (dispatch, getState) => {
       // Provide our auth token as credentials
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify(task)
+    body: JSON.stringify({name, category})
   })
     .then(res => res.json())
     .then(() => dispatch(hideCreateWindow()))
