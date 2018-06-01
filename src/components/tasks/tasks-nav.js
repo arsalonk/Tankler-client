@@ -3,10 +3,10 @@ import React from 'react';
 export default function TasksNav(props) {
   return (
     <nav className='asd'>
-      <a href='/tasks/feeding'>Feeding</a>
-      <a href='/tasks/supplements'>Supplements</a>
-      <a href='/tasks/testing'>Testing</a>
-      <a href='/tasks/maintenance'>Maintenance</a>
+      <a href='/dashboard/tasks/feeding'>Feeding</a>
+      <a href='/dashboard/tasks/supplements'>Supplements</a>
+      <a href='/dashboard/tasks/testing'>Testing</a>
+      <a href='/dashboard/tasks/maintenance'>Maintenance</a>
     </nav>
   );
 }

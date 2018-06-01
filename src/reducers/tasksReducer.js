@@ -1,9 +1,10 @@
-import { FETCH_TASKS_REQUEST, FETCH_TASKS_SUCCESS, FETCH_TASKS_ERROR } from '../actions/tasks';
+import { FETCH_TASKS_REQUEST, FETCH_TASKS_SUCCESS, FETCH_TASKS_ERROR, DELETE_TASK_SUCCESS, SHOW_CREATE_WINDOW, HIDE_CREATE_WINDOW } from '../actions/tasks';
 
 const initialState = {
   tasks: [],
   loading: false,
-  error: null
+  error: null,
+  creating: false
 };
 
 const tasksReducer = (state = initialState, action) => {
@@ -27,6 +28,25 @@ const tasksReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.error
+      }
+
+    case SHOW_CREATE_WINDOW: 
+      return {
+        ...state,
+        creating: true
+      }
+
+    case HIDE_CREATE_WINDOW:
+      return {
+        ...state,
+        creating: false
+      }
+
+    case DELETE_TASK_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        tasks: state.tasks.filter(task => task.id !== action.id)
       }
 
     default:

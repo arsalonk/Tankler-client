@@ -7,10 +7,11 @@ import Testing from './testing';
 import Maintenance from './maintenance';
 import {connect} from 'react-redux';
 import { fetchTasks } from '../../actions/tasks';
+import Create from './create';
 
 class Tasks extends React.Component{
   componentDidMount() {
-    this.props.dispatch(fetchTasks())
+    this.props.dispatch(fetchTasks());
   }
 
   render () {
@@ -18,34 +19,20 @@ class Tasks extends React.Component{
       <div>
         <h2>Tasks tab</h2>
         <TasksNav />
-        <Route exact path='/tasks/feeding' component={Feeding}/>
-        <Route exact path='/tasks/supplements' component={Supplements} />
-        <Route exact path='/tasks/testing' component={Testing} />
-        <Route exact path='/tasks/maintenance' component={Maintenance} />
+        <section>
+          <Route exact path='/dashboard/tasks/feeding' component={Feeding}/>
+          <Route exact path='/dashboard/tasks/supplements' component={Supplements} />
+          <Route exact path='/dashboard/tasks/testing' component={Testing} />
+          <Route exact path='/dashboard/tasks/maintenance' component={Maintenance} />
+        </section>
+        <Create />
       </div>
     );
   }
 }
-// export function taskFolderList(props) {
-//   const URL = '/tasks/';
-//   console.log(props)
-//   const taskFolder = props.taskFolder.map((taskFolder, index) => {
-//     return (
-//       <a href={URL + taskFolder.name} key={index}>
-//         {taskFolder.name}
-//       </a>
-//     );
-//   });
-//   return (
-//     <div>
-//       <Route exact path='/tasks/feeding' component={Supplements}/>
-//       {taskFolder}
-//     </div>
-//   );
-// }
 
-// const mapStateToProps = state => ({
-//   taskFolder: state.taskFolderReducer.taskFolder
-// });
+const mapStateToProps = state => ({
+  creating: state.tasks.creating
+})
 
-export default connect()(Tasks);
+export default connect(mapStateToProps)(Tasks);

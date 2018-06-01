@@ -4,12 +4,12 @@ import './top-nav.css'
 export default function TopNav(props) {
   return (
     <nav className='topnav'>
-      <a href='/'>HOME</a>
-      <a href='/tank'>TANK</a>
-      <a href='/tasks'>TASKS</a>
-      <a href='/parameters'>PARAMETERS</a>
-      <a href='/database'>DATABASE</a>
-      <a href='/info'>INFO</a>
+      <a href='/dashboard/home'>HOME</a>
+      <a href='/dashboard/tank'>TANK</a>
+      <a href='/dashboard/tasks'>TASKS</a>
+      <a href='/dashboard/parameters'>PARAMETERS</a>
+      <a href='/dashboard/database'>DATABASE</a>
+      <a href='/dashboard/info'>INFO</a>
     </nav>
   );
 }
