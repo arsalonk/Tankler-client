@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
 import Input from '../auth/input';
+import moment from 'moment'
 import { required, nonEmpty } from '../../validators';
 import { createParameter, hideUpdateWindow, showUpdateWindow, updateParameter } from '../../actions/parameters';
 
 class Update extends React.Component {
 
   onSubmit(values) {
-    this.props.dispatch(updateParameter(values.stats, values.category, this.props.id));
+    const date = moment().format('LLL')
+    this.props.dispatch(updateParameter(values.stats, values.category, date, this.props.id));
   }
 
   render() {

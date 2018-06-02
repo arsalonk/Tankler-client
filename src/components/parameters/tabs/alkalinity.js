@@ -11,7 +11,7 @@ export function Alkalinity(props) {
     if (!props.updating) {
       return (
         <li key={index}>
-          {parameter.category}
+          <h3>{parameter.category}</h3>
           <div>
             {parameter.stats}
             <p>Updated on:{parameter.updatedAt}</p>

@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux'
 import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
 import Input from '../auth/input';
+import moment from 'moment'
 import {required, nonEmpty} from '../../validators';
 import { createParameter, showCreateWindowP, hideCreateWindowP } from '../../actions/parameters';
 
 class Create extends React.Component {
 
   onSubmit(values) {
-    this.props.dispatch(createParameter(values.stats, values.category))
+    const date = moment().format('LLL')
+    this.props.dispatch(createParameter(values.stats, values.category, date))
   }
 
   render() {

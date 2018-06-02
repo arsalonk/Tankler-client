@@ -7,7 +7,7 @@ import Home from './home';
 import Tank from './tank';
 import Tasks from './tasks/tasks';
 import Parameters from './parameters/parameters';
-import Database from './database';
+import Database from './database/database';
 import Info from './info';
 
 class Dashboard extends Component {
@@ -20,7 +20,7 @@ class Dashboard extends Component {
         <Route path='/dashboard/tank' component={Tank} />
         <Route path='/dashboard/tasks' component={Tasks} />
         <Route path='/dashboard/parameters' component={Parameters} />
-        <Route exact path='/dashboard/database' component={Database} />
+        <Route path='/dashboard/database' component={Database} />
         <Route exact path='/dashboard/info' component={Info} />
       </div>
     );

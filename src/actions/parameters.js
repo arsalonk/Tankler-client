@@ -58,7 +58,7 @@ export const fetchParameters = () => (dispatch, getState) => {
     .catch(error => dispatch(fetchParametersError(error)));
 };
 
-export const createParameter = (stats, category) => (dispatch, getState) => {
+export const createParameter = (stats, category, updatedAt) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/api/parameters`, {
     method: 'POST',
@@ -66,13 +66,13 @@ export const createParameter = (stats, category) => (dispatch, getState) => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({ stats, category })
+    body: JSON.stringify({ stats, category, updatedAt })
   })
     .then(res => res.json())
     .then(() => dispatch(fetchParameters()))
 }
 
-export const updateParameter = (stats, category, id) => (dispatch, getState) => {
+export const updateParameter = (stats, category, updatedAt, id) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/api/parameters/${id}`, {
     method: 'PUT',
@@ -80,7 +80,7 @@ export const updateParameter = (stats, category, id) => (dispatch, getState) => 
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({ stats, category })
+    body: JSON.stringify({ stats, category, updatedAt })
   })
     .then(res => res.json())
     .then(dispatch(hideUpdateWindow()))
