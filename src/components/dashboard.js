@@ -4,7 +4,7 @@ import requiresLogin from './requires-login';
 import { Route } from 'react-router-dom';
 import TopNav from './top-nav';
 import Home from './home';
-import Tank from './tank';
+import Tank from './tank/tank';
 import Tasks from './tasks/tasks';
 import Parameters from './parameters/parameters';
 import Database from './database/database';

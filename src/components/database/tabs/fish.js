@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addLivestock } from '../../../actions/livestock';
 
 export function Fish(props) {
   const filter = props.database.filter(item => item.grouping === 'fish');
@@ -8,6 +9,9 @@ export function Fish(props) {
       <li key={index}>
         {fish.name}
         {fish.scientificName}
+        <button onClick={() => props.dispatch(addLivestock(
+          fish.name, fish.scientificName, fish.grouping, 
+        ))}>Add to tank</button>
       </li>
     )
   })
