@@ -2,30 +2,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, focus } from 'redux-form';
 import Input from '../auth/input';
-import {required, nonEmpty} from '../../validators';
-import { addLivestock } from '../../actions/livestock';
+import { required, nonEmpty } from '../../validators';
+import { addLivestock, hideAddingWindow } from '../../actions/livestock';
 
 class Add extends React.Component {
 
   onSubmit(values) {
     const prop = this.props;
-    this.props.dispatch(addLivestock(prop.name, prop.scientificName, prop.grouping, values.quantity))
+    this.props.dispatch(addLivestock(prop.name, prop.scientificName, prop.grouping, values.nickname))
   }
 
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <Field
-          name='quantity'
-          type='number'
+          name='nickname'
+          type='text'
           component={Input}
-          label='Quantity:'
+          label='Add a nickname?'
           validate={[required, nonEmpty]}
         />
+        <button
+          type='submit'
+          disabled={this.props.pristine || this.props.submitting}>
+          add to tank
+        </button>
+        <button onClick={() => this.props.dispatch(hideAddingWindow())}>cancel</button>
       </form>
-    )
+    );
   }
 }
+
 
 export default reduxForm({
   form: 'add',

@@ -19,9 +19,9 @@ class Database extends React.Component {
         <h2>Database Tab</h2>
         <DatabaseNav />
         <section>
-          <Route exact path='/dashboard/database/fish' component={Fish} />
-          <Route exact path='/dashboard/database/invertebrates' component={Invertebrates} />
-          <Route exact path='/dashboard/database/corals' component={Corals} />
+          <Route exact path='/dashboard/database' component={Fish} />
+          {/* <Route exact path='/dashboard/database/invertebrates' component={Invertebrates} /> */}
+          {/* <Route exact path='/dashboard/database/corals' component={Corals} /> */}
         </section>
       </div>
     )

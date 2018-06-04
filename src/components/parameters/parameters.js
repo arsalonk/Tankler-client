@@ -23,7 +23,7 @@ class Parameters extends React.Component{
       <div>
         <h2>Parameters</h2>
         <ParametersNav />
-        <Route exact path='/dashboard/parameters/alkalinity' component={Alkalinity}/>
+        <Route exact path='/dashboard/parameters' component={Alkalinity}/>
         <Route exact path='/dashboard/parameters/ammonia' component={Ammonia} />
         <Route exact path='/dashboard/parameters/calcium' component={Calcium} />
         <Route exact path='/dashboard/parameters/nitrate' component={Nitrate} />

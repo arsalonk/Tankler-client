@@ -1,0 +1,22 @@
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+
+.list-element {
+  border: 1px solid gray;
+  max-width: 600px;
+  padding-bottom: 10px;
+}
+
+.tank-livestock {
+  border: 1px solid gray;
+  margin: 0px auto;
+  padding: 20px 0;
+}
+
+.tank-specs {
+  list-style: none;
+}

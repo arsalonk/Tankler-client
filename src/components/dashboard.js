@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { Route } from 'react-router-dom';
 import TopNav from './top-nav';
@@ -12,10 +12,19 @@ import Info from './info';
 
 class Dashboard extends Component {
 
+  myFunction() {
+    var x = document.getElementById('topnav');
+    if (x.className === 'topnav') {
+      x.className += ' responsive';
+    } else {
+      x.className = 'topnav';
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <TopNav />
+        <TopNav onClick={() => this.myFunction()}/>
         <Route exact path='/dashboard' component={Home} />
         <Route path='/dashboard/tank' component={Tank} />
         <Route path='/dashboard/tasks' component={Tasks} />

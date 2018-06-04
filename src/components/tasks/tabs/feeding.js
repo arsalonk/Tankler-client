@@ -7,7 +7,7 @@ export function Feeding(props) {
   const filter = props.tasks.filter(task => task.category === 'feeding');
   const tasks = filter.map((task, index) => {
     return (
-      <li key={index}>
+      <li key={index} className='list-element'>
         {task.name}
         <button onClick={() => props.dispatch(deleteTask(task.id))}>delete</button>
       </li>

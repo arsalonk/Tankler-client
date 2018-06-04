@@ -23,6 +23,16 @@ const deleteLivestockSuccess = id => ({
   id
 });
 
+export const SHOW_ADDING_WINDOW = 'SHOW_ADDING_WINDOW';
+export const showAddingWindow = () => ({
+  type: SHOW_ADDING_WINDOW
+});
+
+export const HIDE_ADDING_WINDOW = 'HIDE_ADDING_WINDOW';
+export const hideAddingWindow = () => ({
+  type: HIDE_ADDING_WINDOW
+});
+
 export const fetchLivestock = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   dispatch(fetchLivestockRequest());
@@ -38,7 +48,7 @@ export const fetchLivestock = () => (dispatch, getState) => {
     .catch(error => dispatch(fetchLivestockError(error)))
 };
 
-export const addLivestock = (name, scientificName, grouping, quantity) => (dispatch, getState) => {
+export const addLivestock = (name, scientificName, grouping) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/api/livestock`, {
     method: 'POST',
@@ -46,14 +56,14 @@ export const addLivestock = (name, scientificName, grouping, quantity) => (dispa
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({ name, scientificName, grouping, quantity })
+    body: JSON.stringify({ name, scientificName, grouping })
   })
     .then(res => res.json())
-    .then(() => dispatch(fetchLivestock()))
+    // .then(() => dispatch(fetchLivestock()))
     .catch(err => console.log(err))
 };
 
-export const updateLivestock = (name, scientificName, grouping, quantity, id) => (dispatch, getState) => {
+export const updateLivestock = (name, scientificName, grouping, id) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/api/livestock/${id}`, {
     method: 'PUT',
@@ -61,7 +71,7 @@ export const updateLivestock = (name, scientificName, grouping, quantity, id) =>
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({ name, scientificName, grouping, quantity })
+    body: JSON.stringify({ name, scientificName, grouping })
   })
     .then(res => res.json())
     .then(() => dispatch(fetchLivestock()))

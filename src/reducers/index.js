@@ -6,6 +6,7 @@ import authReducer from './authReducer';
 import {reducer as formReducer} from 'redux-form';
 import databaseReducer from './databaseReducer';
 import tankReducer from './tankReducer';
+import livestockReducer from './livestockReducer';
 
 const rootReducer = combineReducers({
   tasks: tasksReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   auth: authReducer,
   form: formReducer,
   database: databaseReducer,
-  tank: tankReducer
+  tank: tankReducer,
+  livestock: livestockReducer
 });
 
 export default rootReducer;

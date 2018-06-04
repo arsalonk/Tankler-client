@@ -10,7 +10,7 @@ export function Alkalinity(props) {
   const parameters = filter.map((parameter, index) => {
     if (!props.updating) {
       return (
-        <li key={index}>
+        <li key={index} className='list-element'>
           <h3>{parameter.category}</h3>
           <div>
             {parameter.stats}

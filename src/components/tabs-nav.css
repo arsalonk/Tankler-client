@@ -1,0 +1,27 @@
+.tabnav {
+  /* background-color: #333; */
+  /* color: black; */
+  overflow: hidden;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Style the links inside the navigation bar */
+.tabnav a {
+  float: left;
+  display: block;
+  color: black;
+  min-width: 40px;
+  border: 1px solid lightgray;
+  border-radius: 12px 12px 0 0;
+  text-align: center;
+  padding: 7px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.tabnav a:hover {
+  background-color: #ddd;
+  color: black;
+}

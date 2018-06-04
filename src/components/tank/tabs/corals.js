@@ -1,21 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { deleteLivestock } from '../../../actions/livestock';
 
-export function Corals(props) {
+function Corals(props) {
   const filter = props.livestock.filter(livestock => livestock.grouping === 'corals');
   const corals = filter.map((coral, index) => {
     return (
-      <li key={index}>
-        <h3>{coral.grouping}</h3>
-        <p>{coral.name} {coral.quantity}</p>
-        <p>{coral.scientificName}</p>
+      <li key={index} className='list-element'>
+        <p>{coral.name}({coral.scientificName})</p>
+        <button onClick={() => props.dispatch(deleteLivestock(coral.id))}>remove</button>
       </li>
     )
   })
 
-  return (
-    <ul>
-      {corals}
-    </ul>
-  )
+  if (filter.length > 0) {
+    return (
+      <ul className='tank-livestock'>
+        {corals}
+      </ul>
+    )
+  } else {
+    return (
+      <div className='tank-livestock'>
+        <p>Tank has no corals, go to Database to add some</p>
+      </div>
+    )
+  }
 }
+
+const mapStateToProps = state => ({
+  livestock: state.livestock.livestock
+})
+
+export default connect(mapStateToProps)(Corals);

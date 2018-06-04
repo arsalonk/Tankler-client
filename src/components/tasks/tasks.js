@@ -20,7 +20,7 @@ class Tasks extends React.Component{
         <h2>Tasks tab</h2>
         <TasksNav />
         <section>
-          <Route exact path='/dashboard/tasks/feeding' component={Feeding}/>
+          <Route exact path='/dashboard/tasks' component={Feeding}/>
           <Route exact path='/dashboard/tasks/supplements' component={Supplements} />
           <Route exact path='/dashboard/tasks/testing' component={Testing} />
           <Route exact path='/dashboard/tasks/maintenance' component={Maintenance} />
