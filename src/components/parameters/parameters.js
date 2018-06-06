@@ -20,7 +20,7 @@ class Parameters extends React.Component{
 
   render () {
     return (
-      <div>
+      <div className='container'>
         <h2>Parameters</h2>
         <ParametersNav />
         <Route exact path='/dashboard/parameters' component={Alkalinity}/>

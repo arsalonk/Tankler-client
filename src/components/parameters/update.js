@@ -10,7 +10,7 @@ class Update extends React.Component {
 
   onSubmit(values) {
     const date = moment().format('LLL')
-    this.props.dispatch(updateParameter(values.stats, values.category, date, this.props.id));
+    this.props.dispatch(updateParameter(values.stats, this.props.category, date, this.props.id));
   }
 
   render() {
@@ -23,13 +23,13 @@ class Update extends React.Component {
           label='Stats:'
           validate={[required, nonEmpty]}
         />
-        <Field
+        {/* <Field
           name='category'
           type='text'
           component={Input}
           label='Category:'
           validate={[required, nonEmpty]}
-        />
+        /> */}
         <button
           type='submit'
           disabled={this.props.pristine || this.props.submitting}>

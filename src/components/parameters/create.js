@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
 import Input from '../auth/input';
 import moment from 'moment'
-import {required, nonEmpty} from '../../validators';
+import { required, nonEmpty } from '../../validators';
 import { createParameter, showCreateWindowP, hideCreateWindowP } from '../../actions/parameters';
 
 class Create extends React.Component {
 
   onSubmit(values) {
     const date = moment().format('LLL')
-    this.props.dispatch(createParameter(values.stats, values.category, date))
+    this.props.dispatch(createParameter(values.stats, this.props.category, date))
+    this.props.dispatch(hideCreateWindowP());
   }
 
   render() {
@@ -24,13 +25,13 @@ class Create extends React.Component {
             label='Stats:'
             validate={[required, nonEmpty]}
           />
-          <Field
+          {/* <Field
             name='category'
             type='text'
             component={Input}
             label='Category:'
             validate={[required, nonEmpty]}
-          />
+          /> */}
           <button
             type='submit'
             disabled={this.props.pristine || this.props.submitting}>
@@ -43,7 +44,10 @@ class Create extends React.Component {
 
     else {
       return (
-        <button onClick={() => this.props.dispatch(showCreateWindowP())}>Create</button>
+        <div className='list-element'>
+          <p>No statistics exists for this parameter yet</p>
+          <button className='form-button' onClick={() => this.props.dispatch(showCreateWindowP())}>Create</button>
+        </div>
       )
     }
   }

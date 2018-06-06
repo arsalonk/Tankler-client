@@ -1,9 +1,11 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { deleteTask } from '../../../actions/tasks';
+import Create from '../create';
 
 export function Feeding(props) {
   console.log(props)
+  const category = 'feeding';
   const filter = props.tasks.filter(task => task.category === 'feeding');
   const tasks = filter.map((task, index) => {
     return (
@@ -13,15 +15,20 @@ export function Feeding(props) {
       </li>
     );
   });
-  
-  if(!props.creating) {
+
+  if (!props.creating) {
     return (
-      <ul>
-        {tasks}
-      </ul>
+      <div>
+        <ul>
+          {tasks}
+        </ul>
+        <Create category={category} />
+      </div>
     );
   } else {
-    return null;
+    return (
+      <Create category={category} />
+    )
   }
 }
 

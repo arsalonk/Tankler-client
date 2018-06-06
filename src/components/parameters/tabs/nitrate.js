@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import Create from '../create'
 import Update from '../update'
 import { showUpdateWindow } from '../../../actions/parameters';
+import '../parameters.css';
 
 export function Nitrate(props) {
+  const category = 'nitrate';
   const filter = props.parameters.filter(parameter => parameter.category === 'nitrate');
   const parameters = filter.map((parameter, index) => {
     if (!props.updating) {
       return (
-        <li key={index}>
+        <li key={index} className='list-element'>
           <h3>{parameter.category}</h3>
           <div>
             {parameter.stats}
@@ -21,7 +23,7 @@ export function Nitrate(props) {
     } else {
       return (
         <div key={index}>
-          <Update id={parameter.id} />
+          <Update category={parameter.category} id={parameter.id} />
         </div>
       )
     }
@@ -29,13 +31,15 @@ export function Nitrate(props) {
 
   if (filter.length > 0) {
     return (
-      <ul>
+      <ul className='tank-parameters'>
         {parameters}
       </ul>
     );
   } else {
     return (
-      <Create />
+      <div className='tank-parameters'>
+        <Create category={category} />
+      </div>
     )
   }
 }

@@ -49,14 +49,15 @@ class App extends Component {
     let logOutButton;
     if (this.props.loggedIn) {
       logOutButton = (
-        <button onClick={() => this.logOut()}>Log out</button>
+        <button className='logout' onClick={() => this.logOut()}>Log out</button>
       );
     }
 
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Acairium</h1>
+          <img src='https://i.pinimg.com/originals/dd/6a/fb/dd6afb6a1df27638be45d724d4a6d71e.png' className='header-image'/>
+          <h1 className="App-title">Tankler</h1>
           {logOutButton}
         </header>
         <Route exact path="/" component={LandingPage} />

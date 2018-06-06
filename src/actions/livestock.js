@@ -48,7 +48,7 @@ export const fetchLivestock = () => (dispatch, getState) => {
     .catch(error => dispatch(fetchLivestockError(error)))
 };
 
-export const addLivestock = (name, scientificName, grouping) => (dispatch, getState) => {
+export const addLivestock = (name, scientificName, grouping, createdAt) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/api/livestock`, {
     method: 'POST',
@@ -56,7 +56,7 @@ export const addLivestock = (name, scientificName, grouping) => (dispatch, getSt
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({ name, scientificName, grouping })
+    body: JSON.stringify({ name, scientificName, grouping, createdAt })
   })
     .then(res => res.json())
     // .then(() => dispatch(fetchLivestock()))

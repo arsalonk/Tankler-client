@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import Create from '../create';
 import Update from '../update';
 import { updateParameter, showUpdateWindow } from '../../../actions/parameters';
+import '../parameters.css';
 
 export function Alkalinity(props) {
   console.log(props);
+  const category = 'alkalinity';
   const filter = props.parameters.filter(parameter => parameter.category === 'alkalinity');
   const parameters = filter.map((parameter, index) => {
     if (!props.updating) {
@@ -22,7 +24,7 @@ export function Alkalinity(props) {
     } else {
       return (
         <div key={index}>
-          <Update id={parameter.id} />
+          <Update category={parameter.category} id={parameter.id} />
         </div>
       )
     }
@@ -30,13 +32,15 @@ export function Alkalinity(props) {
 
   if (filter.length > 0) {
     return (
-      <ul>
+      <ul className='tank-parameters'>
         {parameters}
       </ul>
     );
   } else {
     return (
-      <Create />
+      <div className='tank-parameters'>
+        <Create category={category} />
+      </div>
     )
   }
 }

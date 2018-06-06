@@ -8,7 +8,7 @@ import { showCreateWindow, createTask, hideCreateWindow } from '../../actions/ta
 class Create extends React.Component {
 
   onSubmit(values) {
-    this.props.dispatch(createTask(values.name, values.category))
+    this.props.dispatch(createTask(values.name, this.props.category))
   }
 
   render() {
@@ -22,13 +22,13 @@ class Create extends React.Component {
             label='Name:'
             validate={[required, nonEmpty]}
           />
-          <Field
+          {/* <Field
             name='category'
             type='text'
             component={Input}
             label='Category:'
             validate={[required, nonEmpty]}
-          />
+          /> */}
           <button
             type='submit'
             disabled={this.props.pristine || this.props.submitting}>

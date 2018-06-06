@@ -12,11 +12,20 @@
   display: block;
   color: black;
   min-width: 50px;
-  border: 1px solid lightgray;
+  border: 1px solid rgb(238, 238, 238);
   border-radius: 12px 12px 0 0;
   text-align: center;
   padding: 7px 16px;
   text-decoration: none;
+  font-size: 17px;
+}
+
+.tanknav li {
+  float: left;
+  display: block;
+  color: black;
+  min-width: 50px;
+  text-align: center;
   font-size: 17px;
 }
 
@@ -26,37 +35,11 @@
   color: black;
 }
 
-/* Add an active class to highlight the current page */
-.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
 /* Hide the link that should open and close the topnav on small screens */
 .tanknav .icon {
   display: none;
 }
 
-/* @media screen and (max-width: 600px) {
-  .tanknav a:not(:first-child) {display: none;}
-  .tanknav a.icon {
-    float: left;
-    display: block;
-  }
+.active {
+  background-color:white;
 }
-
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-/* @media screen and (max-width: 600px) {
-  .tanknav.responsive {position: relative;}
-  .tanknav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    text-align: center;
-  }
-  .tanknav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-} */

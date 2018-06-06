@@ -1,27 +1,34 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { deleteTask } from '../../../actions/tasks';
+import Create from '../create';
 
 export function Testing(props) {
 
+  const category = 'testing';
   const filter = props.tasks.filter(task => task.category === 'testing');
   const tasks = filter.map((task, index) => {
     return (
-      <li key={index}>
+      <li className='list-element' key={index}>
         {task.name}
         <button onClick={() => props.dispatch(deleteTask(task.id))}>delete</button>
       </li>
     );
   });
 
-  if(!props.creating) {
+  if (!props.creating) {
     return (
-      <ul>
-        {tasks}
-      </ul>
+      <div>
+        <ul>
+          {tasks}
+        </ul>
+        <Create category={category} />
+      </div>
     );
   } else {
-    return null;
+    return (
+      <Create category={category} />
+    )
   }
 }
 

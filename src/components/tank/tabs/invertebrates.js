@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteLivestock } from '../../../actions/livestock';
+import { deleteLivestock, updateLivestock } from '../../../actions/livestock';
 
 function Invertebrates(props) {
   const filter = props.livestock.filter(livestock => livestock.grouping === 'invertebrates');
   const invertebrates = filter.map((invertebrate, index) => {
     return (
       <li key={index} className='list-element'>
-        <p>{invertebrate.name}({invertebrate.scientificName})</p>
+        <p>{invertebrate.name}</p><p>({invertebrate.scientificName})</p>
+        <button onClick={() => props.dispatch(updateLivestock())}>nickname</button>
         <button onClick={() => props.dispatch(deleteLivestock(invertebrate.id))}>remove</button>
       </li>
     )

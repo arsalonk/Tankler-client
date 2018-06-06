@@ -13,11 +13,11 @@ import Info from './info';
 class Dashboard extends Component {
 
   myFunction() {
-    var x = document.getElementById('topnav');
-    if (x.className === 'topnav') {
-      x.className += ' responsive';
+    const nav = document.getElementById('topnav');
+    if (nav.className === 'topnav') {
+      nav.className += ' responsive';
     } else {
-      x.className = 'topnav';
+      nav.className = 'topnav';
     }
   }
 

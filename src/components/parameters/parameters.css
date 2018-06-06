@@ -4,25 +4,11 @@
   text-align: center;
 }
 
-
-.list-element {
-  border: 1px solid gray;
-  width: 200px;
-  max-width: 400px;
-  padding-bottom: 10px;
-  flex-grow: 1;
-}
-
-.tank-livestock {
-  /* border: 1px solid gray; */
+.tank-parameters {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 0px auto;
   padding: 20px 0;
   background-color: white;
-}
-
-.tank-specs {
-  list-style: none;
 }

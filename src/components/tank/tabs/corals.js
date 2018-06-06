@@ -7,7 +7,7 @@ function Corals(props) {
   const corals = filter.map((coral, index) => {
     return (
       <li key={index} className='list-element'>
-        <p>{coral.name}({coral.scientificName})</p>
+        <p>{coral.name}</p><p>({coral.scientificName})</p>
         <button onClick={() => props.dispatch(deleteLivestock(coral.id))}>remove</button>
       </li>
     )

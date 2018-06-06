@@ -25,7 +25,7 @@ class Tasks extends React.Component{
           <Route exact path='/dashboard/tasks/testing' component={Testing} />
           <Route exact path='/dashboard/tasks/maintenance' component={Maintenance} />
         </section>
-        <Create />
+        {/* <Create /> */}
       </div>
     );
   }
