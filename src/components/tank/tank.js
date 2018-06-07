@@ -24,12 +24,10 @@ class Tank extends React.Component {
       if (!this.props.updatingTank) {
         return (
           <li key={index} className='tank-specs'>
-            <h3>Tank specs</h3>
+            <h2>Tank specs</h2>
             <p>Length: {tank.length}" Width: {tank.width}" Height: {tank.height}"</p>
-            {/* <p>Width: {tank.width}"</p>
-            <p>Height: {tank.height}"</p> */}
-            <p>Volume: {tank.volume}cm^3</p>
-            <button onClick={() => this.props.dispatch(showUpdateTankWindow())}>Update</button>
+            <p className='volume'>Volume: {tank.volume}cm^3</p>
+            <button className='update-btn' onClick={() => this.props.dispatch(showUpdateTankWindow())}>Update</button>
           </li>
         );
       } else {
@@ -41,10 +39,10 @@ class Tank extends React.Component {
       }
     });
 
-    if (tank.length > 0) {
+    if (tank.length > 0 && !this.props.updatingTank) {
       return (
         <div className='container'>
-          <h3>Tank Livestock</h3>
+          <h2>Tank Livestock</h2>
           <section className='list'>
             <TankNav />
             <Route exact path='/dashboard/tank' component={Fish} />
@@ -56,9 +54,15 @@ class Tank extends React.Component {
           </ul>
         </div>
       );
-    } else {
+    } else if (tank.length > 0 && this.props.updatingTank) {
       return (
         <div>
+          {tank}
+        </div>
+      );
+    } else {
+      return (
+        <div className='container'>
           <p>No tank exists</p>
           <CreateTank />
         </div>

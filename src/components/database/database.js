@@ -6,6 +6,7 @@ import Fish from './tabs/fish';
 import Invertebrates from './tabs/invertebrates';
 import Corals from './tabs/corals';
 import { fetchDatabase } from '../../actions/database';
+import './database.css';
 
 class Database extends React.Component {
 
@@ -15,13 +16,13 @@ class Database extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Database Tab</h2>
+      <div className='container'>
+        <h2>Database</h2>
         <DatabaseNav />
         <section>
           <Route exact path='/dashboard/database' component={Fish} />
-          {/* <Route exact path='/dashboard/database/invertebrates' component={Invertebrates} /> */}
-          {/* <Route exact path='/dashboard/database/corals' component={Corals} /> */}
+          <Route exact path='/dashboard/database/invertebrates' component={Invertebrates} />
+          <Route exact path='/dashboard/database/corals' component={Corals} />
         </section>
       </div>
     )

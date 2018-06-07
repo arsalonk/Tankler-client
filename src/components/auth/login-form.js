@@ -1,8 +1,10 @@
 import React from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
+import { connect } from 'react-redux';
+import { Field, reduxForm, focus } from 'redux-form';
 import Input from './input';
-import {login} from '../../actions/auth';
-import {required, nonEmpty} from '../../validators';
+import { login } from '../../actions/auth';
+import { required, nonEmpty } from '../../validators';
+import '../form.css';
 
 export class LoginForm extends React.Component {
   onSubmit(values) {
@@ -20,36 +22,42 @@ export class LoginForm extends React.Component {
     }
     return (
       <form
-        className="login-form"
+        className="login-form form"
         onSubmit={this.props.handleSubmit(values =>
           this.onSubmit(values)
         )}>
         {error}
-        <label htmlFor="username">Username</label>
+        <h1 className='form-title'>Tankler</h1>
         <Field
+          label='Username'
           component={Input}
           type="text"
           name="username"
           id="username"
           validate={[required, nonEmpty]}
         />
-        <label htmlFor="password">Password</label>
         <Field
+          label='Password'
           component={Input}
           type="password"
           name="password"
           id="password"
           validate={[required, nonEmpty]}
         />
-        <button disabled={this.props.pristine || this.props.submitting}>
-                    Log in
+        <button className='form-btn' disabled={this.props.pristine || this.props.submitting}>
+          Login
         </button>
       </form>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
+
+
 export default reduxForm({
   form: 'login',
   onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-})(LoginForm);
+})(connect(mapStateToProps)(LoginForm));

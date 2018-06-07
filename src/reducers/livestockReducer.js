@@ -1,10 +1,11 @@
-import { FETCH_LIVESTOCK_REQUEST, FETCH_LIVESTOCK_SUCCESS, FETCH_LIVESTOCK_ERROR, SHOW_ADDING_WINDOW, HIDE_ADDING_WINDOW, DELETE_LIVESTOCK_SUCCESS } from "../actions/livestock";
+import { FETCH_LIVESTOCK_REQUEST, FETCH_LIVESTOCK_SUCCESS, FETCH_LIVESTOCK_ERROR, SHOW_ADDING_WINDOW, HIDE_ADDING_WINDOW, DELETE_LIVESTOCK_SUCCESS, SHOW_UPDATE_WINDOW, HIDE_UPDATE_WINDOW } from "../actions/livestock";
 
 const initialState = {
   livestock: [],
   loading: false,
   error: null,
-  adding: false
+  adding: false,
+  updating: false
 };
 
 const livestockReducer = (state = initialState, action) => {
@@ -40,6 +41,18 @@ const livestockReducer = (state = initialState, action) => {
       return {
         ...state,
         adding: false
+      }
+
+    case SHOW_UPDATE_WINDOW:
+      return {
+        ...state,
+        updating: true
+      }
+
+    case HIDE_UPDATE_WINDOW:
+      return {
+        ...state,
+        updating: false
       }
 
     case DELETE_LIVESTOCK_SUCCESS:

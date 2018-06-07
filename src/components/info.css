@@ -1,0 +1,11 @@
+.info-container {
+  background-color: white;
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+  padding: 20px 40px 30px 40px;
+}
+
+.info-container section {
+  text-align: left;
+  /* padding-left: 20px; */
+}

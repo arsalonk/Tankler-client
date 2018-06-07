@@ -1,15 +1,17 @@
 .container {
   max-width: 800px;
+  height: auto;
   margin: 50px auto;
   text-align: center;
 }
 
 
 .list-element {
-  border: 1px solid gray;
+  border: 2px solid rgb(175, 175, 175);
   width: 200px;
   max-width: 400px;
   padding-bottom: 10px;
+  background-color: rgb(255, 255, 255);
   flex-grow: 1;
 }
 
@@ -19,10 +21,40 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 0px auto;
-  padding: 20px 0;
-  background-color: white;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
 }
 
 .tank-specs {
   list-style: none;
+}
+
+.livestock {
+  border-radius: 12px;
+  /* background-color: rgb(253, 122, 199); */
+  padding: 10px;
+}
+
+.volume {
+  margin-bottom: 0;
+}
+
+.tank-form {
+  max-width: 300px;
+  margin: 0 auto 0 auto;
+}
+
+.tank-form label {
+  display: block;
+  text-align: left;
+  font-size: 18px;
+  color: rgb(85, 85, 85)
+}
+
+.tank-form input {
+  border: 2px solid lightgrey;
+  border-radius: 6px;
+  min-height: 35px;
+  min-width: 100px;
+  width: 300px;
 }

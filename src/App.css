@@ -1,5 +1,14 @@
-body {
-  background-color: rgb(238, 250, 253);
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  background-color: rgb(223, 231, 247);
+  /* background-image: url(https://i.pinimg.com/originals/1f/65/09/1f65099975188a82dc0ae85fd5085825.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw; */
 }
 
 .App {
@@ -23,7 +32,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
-
 }
 
 .App-intro {
@@ -44,6 +52,12 @@ body {
   position: absolute;
   top: 10px;
   right: 10px;
+  width: 100px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 12px;
+  font-weight: 700;
 }
 
 ul {
@@ -52,4 +66,22 @@ ul {
 
 .form-button {
   margin: 10px auto 10px auto;
+}
+
+.home {
+  background-image: url('https://i.pinimg.com/originals/dd/6a/fb/dd6afb6a1df27638be45d724d4a6d71e.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.tab-btn {
+  border: 1px solid rgb(46, 154, 255);
+  border-radius: 2px;
+  width: 100px;
+  height: 30px;
+  background-color: rgb(131, 183, 212);
+  color: rgb(0, 0, 0);
+  font-weight: 700;
 }

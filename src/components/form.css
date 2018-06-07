@@ -1,0 +1,42 @@
+.form {
+  max-width: 300px;
+  margin: 0 auto 0 auto;
+  padding-top: 150px;
+}
+
+.form-btn {
+  margin-top: 30px;
+  background-color: rgb(21, 147, 205);
+  color: white;
+  height: 35px;
+  border: 2px solid lightgrey;
+}
+
+.form-input {
+  padding-top: 20px;
+}
+
+.form-title {
+  margin: 0;
+  color: rgb(233, 233, 233);
+  padding-bottom: 20px;
+}
+
+.form label {
+  /* padding: 20px; */
+  display: block;
+  text-align: left;
+  color: rgb(233, 233, 233);
+}
+
+#username, #password, #passwordConfirm, .form-btn {
+  border: 2px solid lightgrey;
+  border-radius: 6px;
+  min-height: 35px;
+  min-width: 100px;
+  width: 300px;
+}
+
+#username, #password, #passwordConfirm {
+  padding-left: 10px;
+}

@@ -2,33 +2,46 @@
   max-width: 800px;
   margin: 50px auto;
   text-align: center;
+  /* background-color: white; */
+  /* padding: 20px; */
 }
 
-.tank-parameters {
+.tasks {
+  background-color: white;
+  padding: 20px;
+}
+
+.task-btn {
+  width: 150px;
+  background-color: rgb(183, 200, 214);
+  border: 1px solid lightgray;
+  height: 25px;
+  border-radius: 4px;
+}
+
+.tasks-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 0px auto;
-  padding: 20px 0;
   background-color: white;
 }
 
-.param-update {
+.task-form {
   max-width: 300px;
   margin: 0 auto 0 auto;
-  /* padding-top: 50px; */
 }
 
-.param-update input, .param-create input {
+.task-form input {
   border: 2px solid lightgrey;
   border-radius: 6px;
   min-height: 35px;
   min-width: 100px;
   width: 300px;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
-.param-update label, .param-create label {
+.task-form label {
   display: block;
   text-align: left;
   font-size: 18px;

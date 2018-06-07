@@ -1,0 +1,21 @@
+.info-modal {
+  max-width: 600px;
+  width: 100%;
+  border-radius: 4px;
+  padding-bottom: 40px;
+  /* color: rgb(15, 207, 134); */
+  opacity: 0.8;
+}
+
+.infomodal-title {
+  text-align: center;
+}
+
+.modal-btn {
+  margin-top: 30px;
+  width: 250px;
+  border-radius: 12px;
+  background-color: rgb(255, 245, 108);
+  border: 2px solid lightgray;
+  color: rgb(133, 138, 139);
+}

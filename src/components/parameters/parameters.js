@@ -12,6 +12,7 @@ import PH from './tabs/pH';
 import Phosphate from './tabs/phosphate';
 import Salinity from './tabs/salinity';
 import Temperature from './tabs/temperature';
+import './parameters.css';
 
 class Parameters extends React.Component{
   componentDidMount() {

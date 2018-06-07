@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
+import { reduxForm, Field, focus } from 'redux-form';
 import Input from '../auth/input';
 import { required, nonEmpty } from '../../validators';
 import { updateTank, hideUpdateTankWindow } from '../../actions/tank';
+import '../create-update-form.css';
 
 class UpdateTank extends React.Component {
 
@@ -14,7 +15,9 @@ class UpdateTank extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+      <form
+        className='update-form'
+        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <Field
           name='length'
           type='number'
@@ -37,11 +40,12 @@ class UpdateTank extends React.Component {
           validate={[required, nonEmpty]}
         />
         <button
+          className='update-btn'
           type='submit'
           disabled={this.props.pristine || this.props.submitting}>
           update
         </button>
-        <button onClick={() => this.props.dispatch(hideUpdateTankWindow())}>cancel</button>
+        <button className='cancel-btn' onClick={() => this.props.dispatch(hideUpdateTankWindow())}>cancel</button>
       </form>
     )
   }

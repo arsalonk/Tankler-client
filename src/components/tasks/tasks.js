@@ -7,7 +7,7 @@ import Testing from './tabs/testing';
 import Maintenance from './tabs/maintenance';
 import {connect} from 'react-redux';
 import { fetchTasks } from '../../actions/tasks';
-import Create from './create';
+import './tasks.css';
 
 class Tasks extends React.Component{
   componentDidMount() {
@@ -16,16 +16,15 @@ class Tasks extends React.Component{
 
   render () {
     return (
-      <div>
-        <h2>Tasks tab</h2>
+      <div className='container'>
+        <h2>Tasks</h2>
         <TasksNav />
-        <section>
+        <section className='tasks'>
           <Route exact path='/dashboard/tasks' component={Feeding}/>
           <Route exact path='/dashboard/tasks/supplements' component={Supplements} />
           <Route exact path='/dashboard/tasks/testing' component={Testing} />
           <Route exact path='/dashboard/tasks/maintenance' component={Maintenance} />
         </section>
-        {/* <Create /> */}
       </div>
     );
   }

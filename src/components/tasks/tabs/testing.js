@@ -9,9 +9,9 @@ export function Testing(props) {
   const filter = props.tasks.filter(task => task.category === 'testing');
   const tasks = filter.map((task, index) => {
     return (
-      <li className='list-element' key={index}>
-        {task.name}
-        <button onClick={() => props.dispatch(deleteTask(task.id))}>delete</button>
+      <li key={index} className='list-element'>
+        <p>{task.name}</p>
+        <button className='task-btn' onClick={() => props.dispatch(deleteTask(task.id))}>delete</button>
       </li>
     );
   });
@@ -19,7 +19,7 @@ export function Testing(props) {
   if (!props.creating) {
     return (
       <div>
-        <ul>
+        <ul className='tasks-list'>
           {tasks}
         </ul>
         <Create category={category} />

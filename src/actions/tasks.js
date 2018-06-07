@@ -62,7 +62,7 @@ export const deleteTask = (id) => (dispatch, getState) => {
     .catch(error => dispatch(fetchTasksError(error)));
 };
 
-export const createTask = (name, category) => (dispatch, getState) => {
+export const createTask = (name, category, createdOn, displayOn, repeat) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/api/tasks`, {
     method: 'POST',
@@ -71,10 +71,26 @@ export const createTask = (name, category) => (dispatch, getState) => {
       // Provide our auth token as credentials
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({name, category})
+    body: JSON.stringify({name, category, createdOn, displayOn, repeat})
   })
     .then(res => res.json())
     .then(() => dispatch(hideCreateWindow()))
+    .then(() => dispatch(fetchTasks()))
+    .catch(error => dispatch(fetchTasksError(error)))
+};
+
+export const updateTask = (name, category, createdOn, displayOn, repeat, id) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  fetch(`${API_BASE_URL}/api/tasks/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      // Provide our auth token as credentials
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify({name, category, createdOn, displayOn, repeat})
+  })
+    .then(res => res.json())
     .then(() => dispatch(fetchTasks()))
     .catch(error => dispatch(fetchTasksError(error)))
 };

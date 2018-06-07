@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, focus} from 'redux-form';
 import Input from '../auth/input';
 import {required, nonEmpty} from '../../validators';
 import { hideCreateTankWindow, showCreateTankWindow, createTank } from '../../actions/tank';
@@ -15,7 +15,7 @@ class CreateTank extends React.Component {
   render() {
     if (this.props.creatingTank) {
       return (
-        <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        <form className='tank-form' onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <Field
             name='length'
             type='number'
@@ -38,18 +38,19 @@ class CreateTank extends React.Component {
             validate={[required, nonEmpty]}
           />
           <button
+            className='create-btn'
             type='submit'
             disabled={this.props.pristine || this.props.submitting}>
             create
           </button>
-          <button onClick={() => this.props.dispatch(hideCreateTankWindow())}>cancel</button>
+          <button className='cancel-btn' onClick={() => this.props.dispatch(hideCreateTankWindow())}>cancel</button>
         </form>
       )
     }
 
     else {
       return (
-        <button onClick={() => this.props.dispatch(showCreateTankWindow())}>Create</button>
+        <button className='create-btn' onClick={() => this.props.dispatch(showCreateTankWindow())}>Create</button>
       )
     }
   }

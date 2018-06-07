@@ -9,10 +9,12 @@ import Tasks from './tasks/tasks';
 import Parameters from './parameters/parameters';
 import Database from './database/database';
 import Info from './info';
+import { clearAuth } from '../actions/auth';
+import { clearAuthToken } from '../local-storage';
 
 class Dashboard extends Component {
 
-  myFunction() {
+  showLinks() {
     const nav = document.getElementById('topnav');
     if (nav.className === 'topnav') {
       nav.className += ' responsive';
@@ -21,10 +23,30 @@ class Dashboard extends Component {
     }
   }
 
+  logOut() {
+    this.props.dispatch(clearAuth());
+    clearAuthToken();
+  }
+
   render() {
+    let logOutButton;
+    if (this.props.loggedIn) {
+      logOutButton = (
+        <button className='logout' onClick={() => this.logOut()}>Logout</button>
+      );
+    }
     return (
       <div className="App">
-        <TopNav onClick={() => this.myFunction()}/>
+        <header className="App-header">
+          <img
+            src='https://i.pinimg.com/originals/dd/6a/fb/dd6afb6a1df27638be45d724d4a6d71e.png'
+            className='header-image'
+            alt='Ocean floor with light blue water and sand on the bottom'
+          />
+          <h1 className="App-title">Tankler</h1>
+          {logOutButton}
+        </header>
+        <TopNav onClick={() => this.showLinks()} />
         <Route exact path='/dashboard' component={Home} />
         <Route path='/dashboard/tank' component={Tank} />
         <Route path='/dashboard/tasks' component={Tasks} />
@@ -36,4 +58,9 @@ class Dashboard extends Component {
   }
 }
 
-export default requiresLogin()(connect()(Dashboard));
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
+
+
+export default requiresLogin()(connect(mapStateToProps)(Dashboard));

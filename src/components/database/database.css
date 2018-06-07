@@ -1,0 +1,15 @@
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.database-data {
+  /* border: 1px solid gray; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0px auto;
+  padding: 20px;
+  background-color: white;
+}

@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { reduxForm, Field, focus } from 'redux-form';
 import Input from '../auth/input';
 import { required, nonEmpty } from '../../validators';
-import { addLivestock, hideAddingWindow, updateLivestock } from '../../actions/livestock';
+import { updateLivestock, hideUpdateWindow } from '../../actions/livestock';
 
 class Add extends React.Component {
 
   onSubmit(values) {
     const prop = this.props;
-    this.props.dispatch(updateLivestock(prop.name, prop.scientificName, prop.grouping, values.nickname))
+    this.props.dispatch(updateLivestock(prop.name, prop.scientificName, values.nickname, prop.grouping, prop.id))
   }
 
   render() {
@@ -27,7 +27,7 @@ class Add extends React.Component {
           disabled={this.props.pristine || this.props.submitting}>
           add to tank
         </button>
-        <button onClick={() => this.props.dispatch(hideAddingWindow())}>cancel</button>
+        <button onClick={() => this.props.dispatch(hideUpdateWindow())}>cancel</button>
       </form>
     );
   }

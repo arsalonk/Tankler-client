@@ -4,7 +4,7 @@ import './top-nav.css'
 export default function TopNav(props) {
   return (
     <nav className='topnav' id='topnav'>
-      <a href="javascript:void(0);" className="icon" onClick={() => props.onClick()}>
+      <a className="icon" onClick={() => props.onClick()}>
         <i className="fa fa-bars"></i>
       </a>
       <a href='/dashboard'>HOME</a>

@@ -4,14 +4,13 @@ import { deleteTask } from '../../../actions/tasks';
 import Create from '../create';
 
 export function Feeding(props) {
-  console.log(props)
   const category = 'feeding';
   const filter = props.tasks.filter(task => task.category === 'feeding');
   const tasks = filter.map((task, index) => {
     return (
       <li key={index} className='list-element'>
-        {task.name}
-        <button onClick={() => props.dispatch(deleteTask(task.id))}>delete</button>
+        <p>{task.name}</p>
+        <button className='task-btn' onClick={() => props.dispatch(deleteTask(task.id))}>delete</button>
       </li>
     );
   });
@@ -19,10 +18,10 @@ export function Feeding(props) {
   if (!props.creating) {
     return (
       <div>
-        <ul>
+        <ul className='tasks-list'>
           {tasks}
         </ul>
-        <Create category={category} />
+        <Create category={category}/>
       </div>
     );
   } else {

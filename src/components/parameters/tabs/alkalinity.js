@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Create from '../create';
 import Update from '../update';
-import { updateParameter, showUpdateWindow } from '../../../actions/parameters';
+import { showUpdateWindow } from '../../../actions/parameters';
 import '../parameters.css';
 
 export function Alkalinity(props) {
-  console.log(props);
   const category = 'alkalinity';
   const filter = props.parameters.filter(parameter => parameter.category === 'alkalinity');
   const parameters = filter.map((parameter, index) => {
@@ -18,7 +17,7 @@ export function Alkalinity(props) {
             {parameter.stats}
             <p>Updated on:{parameter.updatedAt}</p>
           </div>
-          <button onClick={() => props.dispatch(showUpdateWindow())}>Update</button>
+          <button className='update-btn' onClick={() => props.dispatch(showUpdateWindow())}>Update</button>
         </li>
       );
     } else {

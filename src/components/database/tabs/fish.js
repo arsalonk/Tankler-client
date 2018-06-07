@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addLivestock, showAddingWindow } from '../../../actions/livestock';
+import { addLivestock } from '../../../actions/livestock';
 import moment from 'moment';
-import Add from '../../livestock/add';
 
 export function Fish(props) {
   const today = moment().format('LL');
@@ -12,15 +11,17 @@ export function Fish(props) {
       <li key={index} className='list-element'>
         <p>
           {fish.name}
+        </p>
+        <p>
           ({fish.scientificName})
         </p>
-        <button onClick={() => props.dispatch(addLivestock(fish.name, fish.scientificName, fish.grouping, today))}>Add to tank</button>
+        <button className='create-btn' onClick={() => props.dispatch(addLivestock(fish.name, fish.scientificName, fish.grouping, today))}>Add to tank</button>
       </li>
     )
   })
 
   return (
-    <ul>
+    <ul className='database-data'>
       {fish}
     </ul>
   )

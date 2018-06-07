@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { deleteLivestock } from '../../../actions/livestock';
 
 function Corals(props) {
-  const filter = props.livestock.filter(livestock => livestock.grouping === 'corals');
+  const filter = props.livestock.filter(livestock => livestock.grouping === 'coral');
   const corals = filter.map((coral, index) => {
     return (
-      <li key={index} className='list-element'>
+      <li key={index} className='list-element livestock'>
         <p>{coral.name}</p><p>({coral.scientificName})</p>
-        <button onClick={() => props.dispatch(deleteLivestock(coral.id))}>remove</button>
+        <p>Added to tank on: {coral.createdAt}</p>
+        <button className='tab-btn' onClick={() => props.dispatch(deleteLivestock(coral.id))}>remove</button>
       </li>
     )
   })

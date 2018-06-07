@@ -1,0 +1,32 @@
+.update-form {
+  max-width: 300px;
+  margin: 0 auto 0 auto;
+  padding-top: 100px;
+}
+
+.update-form label {
+  display: block;
+  text-align: left;
+}
+
+.update-form input {
+  border: 2px solid lightgrey;
+  border-radius: 6px;
+  min-height: 35px;
+  min-width: 100px;
+  width: 300px;
+}
+
+.update-btn, .cancel-btn, .create-btn {
+  margin: 20px 10px 0 10px;
+  height: 30px;
+  width: 100px;
+  border-radius: 8px;
+  border: 2px solid rgb(160, 159, 159);
+  background-color: rgb(255, 255, 255);
+  color: rgb(53, 123, 202)
+}
+
+.update-btn:hover, .cancel-btn:hover, .create-btn:hover {
+  background-color: rgb(117, 199, 236);
+}

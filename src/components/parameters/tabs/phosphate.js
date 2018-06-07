@@ -17,7 +17,7 @@ export function Phosphate(props) {
             {parameter.stats}
             <p>Updated on:{parameter.updatedAt}</p>
           </div>
-          <button onClick={() => props.dispatch(showUpdateWindow())}>Update</button>
+          <button className='update-btn' onClick={() => props.dispatch(showUpdateWindow())}>Update</button>
         </li>
       );
     } else {

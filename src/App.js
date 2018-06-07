@@ -46,24 +46,12 @@ class App extends Component {
 
   render() {
 
-    let logOutButton;
-    if (this.props.loggedIn) {
-      logOutButton = (
-        <button className='logout' onClick={() => this.logOut()}>Log out</button>
-      );
-    }
-
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src='https://i.pinimg.com/originals/dd/6a/fb/dd6afb6a1df27638be45d724d4a6d71e.png' className='header-image'/>
-          <h1 className="App-title">Tankler</h1>
-          {logOutButton}
-        </header>
+      <main role='main' className="App">
         <Route exact path="/" component={LandingPage} />
         <Route path="/dashboard" component={Dashboard} />
         <Route exact path="/register" component={RegistrationPage} />
-      </div>
+      </main>
     );
   }
 }

@@ -59,7 +59,7 @@ const tankReducer = (state = initialState, action) => {
         ...state,
         tank: state.tank.filter(tank => tank.id !== action.id)
       }
-      
+
     default:
       return state
   }

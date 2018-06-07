@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
+import { reduxForm, Field, focus } from 'redux-form';
 import Input from '../auth/input';
 import moment from 'moment'
 import { required, nonEmpty } from '../../validators';
-import { createParameter, hideUpdateWindow, showUpdateWindow, updateParameter } from '../../actions/parameters';
+import { hideUpdateWindow, updateParameter } from '../../actions/parameters';
 
 class Update extends React.Component {
 
@@ -15,7 +15,7 @@ class Update extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+      <form className='param-update' onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <Field
           name='stats'
           type='text'
@@ -23,19 +23,13 @@ class Update extends React.Component {
           label='Stats:'
           validate={[required, nonEmpty]}
         />
-        {/* <Field
-          name='category'
-          type='text'
-          component={Input}
-          label='Category:'
-          validate={[required, nonEmpty]}
-        /> */}
         <button
+          className='update-btn'
           type='submit'
           disabled={this.props.pristine || this.props.submitting}>
           Update
         </button>
-        <button onClick={() => this.props.dispatch(hideUpdateWindow())}>Cancel</button>
+        <button className='update-btn' onClick={() => this.props.dispatch(hideUpdateWindow())}>Cancel</button>
       </form>
     );
   }

@@ -33,6 +33,16 @@ export const hideAddingWindow = () => ({
   type: HIDE_ADDING_WINDOW
 });
 
+export const SHOW_UPDATE_WINDOW = 'SHOW_UPDATE_WINDOW';
+export const showUpdateWindow = () => ({
+  type: SHOW_UPDATE_WINDOW
+});
+
+export const HIDE_UPDATE_WINDOW = 'HIDE_UPDATE_WINDOW';
+export const hideUpdateWindow = () => ({
+  type: HIDE_UPDATE_WINDOW
+})
+
 export const fetchLivestock = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   dispatch(fetchLivestockRequest());
@@ -63,7 +73,7 @@ export const addLivestock = (name, scientificName, grouping, createdAt) => (disp
     .catch(err => console.log(err))
 };
 
-export const updateLivestock = (name, scientificName, grouping, id) => (dispatch, getState) => {
+export const updateLivestock = (name, scientificName, nickname, grouping, id) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/api/livestock/${id}`, {
     method: 'PUT',
@@ -71,9 +81,10 @@ export const updateLivestock = (name, scientificName, grouping, id) => (dispatch
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({ name, scientificName, grouping })
+    body: JSON.stringify({ name, scientificName, nickname, grouping })
   })
     .then(res => res.json())
+    .then(() => dispatch(hideUpdateWindow()))
     .then(() => dispatch(fetchLivestock()))
     .catch(err => console.log(err))
 };

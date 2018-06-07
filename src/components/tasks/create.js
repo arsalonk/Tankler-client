@@ -1,20 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {reduxForm, Field, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, focus} from 'redux-form';
 import Input from '../auth/input';
+import moment from 'moment';
 import {required, nonEmpty} from '../../validators';
 import { showCreateWindow, createTask, hideCreateWindow } from '../../actions/tasks';
 
 class Create extends React.Component {
 
   onSubmit(values) {
-    this.props.dispatch(createTask(values.name, this.props.category))
+    const today = moment().format('LL')
+    const display = moment().add(values.repeat, 'day').format('LL')
+    this.props.dispatch(createTask(values.name, this.props.category, today, display, values.repeat))
   }
 
   render() {
     if (this.props.creating) {
       return (
-        <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        <form className='task-form' onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <Field
             name='name'
             type='text'
@@ -22,26 +25,27 @@ class Create extends React.Component {
             label='Name:'
             validate={[required, nonEmpty]}
           />
-          {/* <Field
-            name='category'
-            type='text'
+          <Field
+            name='repeat'
+            type='number'
             component={Input}
-            label='Category:'
+            label='Every how many days?'
             validate={[required, nonEmpty]}
-          /> */}
+          />
           <button
+            className='create-btn'
             type='submit'
             disabled={this.props.pristine || this.props.submitting}>
             create
           </button>
-          <button onClick={() => this.props.dispatch(hideCreateWindow())}>cancel</button>
+          <button className='cancel-btn' onClick={() => this.props.dispatch(hideCreateWindow())}>cancel</button>
         </form>
       )
     }
 
     else {
       return (
-        <button onClick={() => this.props.dispatch(showCreateWindow())}>Create Task</button>
+        <button className='create-btn' onClick={() => this.props.dispatch(showCreateWindow())}>Create Task</button>
       )
     }
   }
@@ -50,8 +54,6 @@ class Create extends React.Component {
 const mapStateToProps = state => ({
   creating: state.tasks.creating
 })
-
-// connect(mapStateToProps)(Create);
 
 export default reduxForm({
   form: 'create',
