@@ -26,7 +26,7 @@ class Tank extends React.Component {
           <li key={index} className='tank-specs'>
             <h2>Tank specs</h2>
             <p>Length: {tank.length}" Width: {tank.width}" Height: {tank.height}"</p>
-            <p className='volume'>Volume: {tank.volume}cm^3</p>
+            <p className='volume'>Volume: {tank.volume}in^3</p>
             <button className='update-btn' onClick={() => this.props.dispatch(showUpdateTankWindow())}>Update</button>
           </li>
         );
