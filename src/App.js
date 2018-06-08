@@ -5,7 +5,7 @@ import LandingPage from './components/landing-page';
 import Dashboard from './components/dashboard';
 import RegistrationPage from './components/auth/registration-page';
 import './App.css';
-import { clearAuth, refreshAuthToken } from './actions/auth';
+import { clearAuth } from './actions/auth';
 import { clearAuthToken } from './local-storage';
 
 class App extends Component {
