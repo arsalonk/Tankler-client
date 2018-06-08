@@ -21,12 +21,15 @@ class Tank extends React.Component {
   render() {
 
     const tank = this.props.tank.map((tank, index) => {
+      const gallons = tank.volume * 0.0043290;
+      const rounded = parseFloat(Math.round(gallons * 100) / 100).toFixed(2);
       if (!this.props.updatingTank) {
         return (
           <li key={index} className='tank-specs'>
             <h2>Tank specs</h2>
-            <p>Length: {tank.length}" Width: {tank.width}" Height: {tank.height}"</p>
+            <p>Length: {tank.length}"  Width: {tank.width}"  Height: {tank.height}"</p>
             <p className='volume'>Volume: {tank.volume}in^3</p>
+            <p className='volume'>{rounded} gallons</p>
             <button className='update-btn' onClick={() => this.props.dispatch(showUpdateTankWindow())}>Update</button>
           </li>
         );

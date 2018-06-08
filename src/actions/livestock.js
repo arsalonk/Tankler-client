@@ -73,7 +73,7 @@ export const addLivestock = (name, scientificName, grouping, createdAt) => (disp
     .catch(err => console.log(err))
 };
 
-export const updateLivestock = (name, scientificName, nickname, grouping, id) => (dispatch, getState) => {
+export const updateLivestock = (name, scientificName, grouping, id) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/api/livestock/${id}`, {
     method: 'PUT',
@@ -81,7 +81,7 @@ export const updateLivestock = (name, scientificName, nickname, grouping, id) =>
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify({ name, scientificName, nickname, grouping })
+    body: JSON.stringify({ name, scientificName, grouping })
   })
     .then(res => res.json())
     .then(() => dispatch(hideUpdateWindow()))
