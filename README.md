@@ -28,13 +28,13 @@
 #Info page - The modal on the login page directs users here for a more in-depth guide on what the app is and how to use it.
 
 #Tech-stack
--react / react-redux / react-dom
--redux / redux form / redux thunk
--node
--express
--mongo/mongoose
--jwt-decode
--moment
+react / react-redux / react-dom
+redux / redux form / redux thunk
+node
+express
+mongo/mongoose
+jwt-decode
+moment
 
 Actions, components, and reducers have all been separated into their own folders inside the src folder. The actions folder contains files named after the components with the actions for the component they've been named after. The reducers folder contains reducers for all the actions all connected by combineReducers inside the index.js file.
 
