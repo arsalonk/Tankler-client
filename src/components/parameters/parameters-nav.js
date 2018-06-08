@@ -4,7 +4,10 @@ import { NavLink } from 'react-router-dom';
 export default function ParametersNav(props) {
   return (
     <nav className='tabnav'>
-      <ul>
+      <ul id='tabnav' className='tabnav'>
+        <a className="icon" onClick={() => props.onClick()}>
+          <i className="fa fa-flask"></i>
+        </a>
         <li><NavLink exact to='/dashboard/parameters' activeclassname="active">Alkalinity</NavLink></li>
         <li><NavLink to='/dashboard/parameters/ammonia' activeclassname="active">Ammonia</NavLink></li>
         <li><NavLink to='/dashboard/parameters/calcium' activeclassname="active">Calcium</NavLink></li>

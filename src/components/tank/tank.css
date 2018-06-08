@@ -7,7 +7,7 @@
 
 
 .list-element {
-  border: 2px solid rgb(175, 175, 175);
+  border: 2px solid rgb(87, 138, 165);
   width: 200px;
   max-width: 400px;
   padding-bottom: 10px;
@@ -31,8 +31,15 @@
 
 .livestock {
   border-radius: 12px;
-  /* background-color: rgb(253, 122, 199); */
-  padding: 10px;
+  /* position: relative; */
+}
+
+.livestock p {
+  margin: 10px 0 0 0;
+}
+
+.livestock button {
+  margin-top: 20px;
 }
 
 .volume {
@@ -57,4 +64,18 @@
   min-height: 35px;
   min-width: 100px;
   width: 300px;
+}
+
+.tank-img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.tank-img-container {
+  height: 50%;
+}
+
+.text-container {
+  height: 40%;
 }

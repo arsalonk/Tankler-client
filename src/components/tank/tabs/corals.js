@@ -7,9 +7,14 @@ function Corals(props) {
   const corals = filter.map((coral, index) => {
     return (
       <li key={index} className='list-element livestock'>
-        <p>{coral.name}</p><p>({coral.scientificName})</p>
-        <p>Added to tank on: {coral.createdAt}</p>
-        <button className='tab-btn' onClick={() => props.dispatch(deleteLivestock(coral.id))}>remove</button>
+        <div className='tank-img-container'>
+          <img src={coral.img} alt='' className='tank-img' />
+        </div>
+        <div className='text-container'>
+          <p>{coral.name}</p><p>({coral.scientificName})</p>
+          <p>Added to tank on: {coral.createdAt}</p>
+          <button className='tab-btn' onClick={() => props.dispatch(deleteLivestock(coral.id))}>remove</button>
+        </div>
       </li>
     )
   })

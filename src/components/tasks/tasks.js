@@ -10,6 +10,16 @@ import { fetchTasks } from '../../actions/tasks';
 import './tasks.css';
 
 class Tasks extends React.Component{
+  showLinks() {
+    const nav = document.getElementById('tasknav');
+    if (nav.className === 'tasknav') {
+      nav.className += ' responsive';
+    } else {
+      nav.className = 'tasknav';
+    }
+  }
+
+
   componentDidMount() {
     this.props.dispatch(fetchTasks());
   }
@@ -18,7 +28,7 @@ class Tasks extends React.Component{
     return (
       <div className='container'>
         <h2>Tasks</h2>
-        <TasksNav />
+        <TasksNav onClick={() => this.showLinks()}/>
         <section className='tasks'>
           <Route exact path='/dashboard/tasks' component={Feeding}/>
           <Route exact path='/dashboard/tasks/supplements' component={Supplements} />

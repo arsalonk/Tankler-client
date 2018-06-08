@@ -14,8 +14,10 @@
 .modal-btn {
   margin-top: 30px;
   width: 250px;
+  height: 25px;
   border-radius: 12px;
   background-color: rgb(255, 245, 108);
   border: 2px solid lightgray;
-  color: rgb(133, 138, 139);
+  color: rgb(14, 97, 114);
+  font-weight: 700;
 }

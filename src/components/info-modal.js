@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-responsive-modal';
-import '../info-modal.css'
+import './info-modal.css'
 
 class InfoModal extends React.Component {
   state = {

@@ -15,6 +15,15 @@ import Temperature from './tabs/temperature';
 import './parameters.css';
 
 class Parameters extends React.Component{
+  showLinks() {
+    const nav = document.getElementById('tabnav');
+    if (nav.className === 'tabnav') {
+      nav.className += ' responsive';
+    } else {
+      nav.className = 'tabnav';
+    }
+  }
+
   componentDidMount() {
     this.props.dispatch(fetchParameters())
   }
@@ -23,7 +32,7 @@ class Parameters extends React.Component{
     return (
       <div className='container'>
         <h2>Parameters</h2>
-        <ParametersNav />
+        <ParametersNav onClick={() => this.showLinks()} />
         <Route exact path='/dashboard/parameters' component={Alkalinity}/>
         <Route exact path='/dashboard/parameters/ammonia' component={Ammonia} />
         <Route exact path='/dashboard/parameters/calcium' component={Calcium} />

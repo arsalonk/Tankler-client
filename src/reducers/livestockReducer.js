@@ -31,30 +31,6 @@ const livestockReducer = (state = initialState, action) => {
         error: action.error
       }
 
-    case SHOW_ADDING_WINDOW:
-      return {
-        ...state,
-        adding: true
-      }
-    
-    case HIDE_ADDING_WINDOW:
-      return {
-        ...state,
-        adding: false
-      }
-
-    case SHOW_UPDATE_WINDOW:
-      return {
-        ...state,
-        updating: true
-      }
-
-    case HIDE_UPDATE_WINDOW:
-      return {
-        ...state,
-        updating: false
-      }
-
     case DELETE_LIVESTOCK_SUCCESS:
       return {
         ...state,

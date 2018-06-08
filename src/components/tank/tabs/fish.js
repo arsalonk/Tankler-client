@@ -7,9 +7,14 @@ function Fish(props) {
   const fish = filter.map((fish, index) => {
     return (
       <li key={index} className='list-element livestock'>
-        <p>{fish.name}</p><p>({fish.scientificName})</p>
-        <p>Added to tank on: {fish.createdAt}</p>
-        <button className='tab-btn fish-btn' onClick={() => props.dispatch(deleteLivestock(fish.id))}>remove</button>
+        <div className='tank-img-container'>
+          <img src={fish.img} alt='' className='tank-img' />
+        </div>
+        <div className='text-container'>
+          <p>{fish.name}</p><p>({fish.scientificName})</p>
+          <p>Added to tank on: {fish.createdAt}</p>
+          <button className='tab-btn fish-btn' onClick={() => props.dispatch(deleteLivestock(fish.id))}>remove</button>
+        </div>
       </li>
     )
   })

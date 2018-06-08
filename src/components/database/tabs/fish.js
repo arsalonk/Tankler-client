@@ -9,13 +9,16 @@ export function Fish(props) {
   const fish = filter.map((fish, index) => {
     return (
       <li key={index} className='list-element'>
+        <div className='img-container'>
+          <img src={fish.img} alt='' className='db-img' />
+        </div>
         <p>
           {fish.name}
         </p>
         <p>
           ({fish.scientificName})
         </p>
-        <button className='create-btn' onClick={() => props.dispatch(addLivestock(fish.name, fish.scientificName, fish.grouping, today))}>Add to tank</button>
+        <button className='create-btn' onClick={() => props.dispatch(addLivestock(fish.name, fish.scientificName, fish.grouping, fish.img, today))}>Add to tank</button>
       </li>
     )
   })

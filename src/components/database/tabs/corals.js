@@ -9,13 +9,16 @@ export function Corals(props) {
   const corals = filter.map((coral, index) => {
     return (
       <li key={index} className='list-element'>
+        <div className='img-container'>
+          <img src={coral.img} alt='' className='db-img' />
+        </div>
         <p>
           {coral.name}
         </p>
         <p>
           ({coral.scientificName})
         </p>
-        <button className='create-btn' onClick={() => props.dispatch(addLivestock(coral.name, coral.scientificName, coral.grouping, today))}>Add to tank</button>
+        <button className='create-btn' onClick={() => props.dispatch(addLivestock(coral.name, coral.scientificName, coral.grouping, coral.img, today))}>Add to tank</button>
       </li>
     )
   })

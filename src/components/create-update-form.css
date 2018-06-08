@@ -23,8 +23,8 @@
   width: 100px;
   border-radius: 8px;
   border: 2px solid rgb(160, 159, 159);
-  background-color: rgb(255, 255, 255);
-  color: rgb(53, 123, 202)
+  background-color: rgba(255, 255, 255, 0.842);
+  color: rgb(37, 98, 211)
 }
 
 .update-btn:hover, .cancel-btn:hover, .create-btn:hover {
