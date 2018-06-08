@@ -1,4 +1,5 @@
 import { API_BASE_URL } from '../config';
+import { refreshAuthToken } from './auth';
 
 export const FETCH_TANK_REQUEST = 'FETCH_TANK_REQUEST';
 const fetchTankRequest = () => ({
@@ -53,7 +54,12 @@ export const fetchTank = () => (dispatch, getState) => {
       Authorization: `Bearer ${authToken}`
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if(res.status === 401) {
+        dispatch(refreshAuthToken());
+      }
+      return res.json();
+    })
     .then(tank => dispatch(fetchTankSuccess(tank)))
     .catch(error => dispatch(fetchTankError(error)));
 }

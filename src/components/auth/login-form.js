@@ -28,6 +28,8 @@ export class LoginForm extends React.Component {
         )}>
         {error}
         <h1 className='form-title'>Tankler</h1>
+        <p>Demo account:</p>
+        <p>Username: demo</p><p>Password: birdspoon</p>
         <Field
           label='Username'
           component={Input}

@@ -40,3 +40,7 @@
 #username, #password, #passwordConfirm {
   padding-left: 10px;
 }
+
+.form p {
+  margin: 0;
+}

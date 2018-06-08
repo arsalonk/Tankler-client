@@ -39,7 +39,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        currentUser: action.user
+        currentUser: action.currentUser
       }
 
     case AUTH_ERROR:
