@@ -13,7 +13,6 @@ class CreateTank extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     if (this.props.creatingTank) {
       return (
         <form className='tank-form' onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
