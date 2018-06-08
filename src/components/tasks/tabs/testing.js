@@ -7,10 +7,16 @@ export function Testing(props) {
 
   const category = 'testing';
   const filter = props.tasks.filter(task => task.category === 'testing');
+  let days;
   const tasks = filter.map((task, index) => {
+    if(task.repeat === 1) {
+      days = 'day';
+    } else {
+      days = `${task.repeat} days`;
+    }
     return (
       <li key={index} className='list-element'>
-        <p>{task.name}</p>
+        <p>{task.name} every {days}</p>
         <button className='task-btn' onClick={() => props.dispatch(deleteTask(task.id))}>delete</button>
       </li>
     );
